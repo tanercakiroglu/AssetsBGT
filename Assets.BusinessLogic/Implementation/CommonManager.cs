@@ -1,23 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Assets.BusinessLogic.Interface;
 using Assets.DO;
-using Assets.DataAccessLayer.Implementation;
 using Assets.DataAccessLayer.Interface;
 
 namespace Assets.BusinessLogic.Implementation
 {
     public class CommonManager : ICommonManager
     {
-        private ICommonDAO _commonDAO;
-        public CommonManager(ICommonDAO commonDAO)
+        private ICountryRepository _countryRepo;
+        public CommonManager(ICountryRepository countryRepo)
         {
-            _commonDAO = commonDAO;
+            _countryRepo = countryRepo;
         }
+
+        public void AddCountry(Country country)
+        {
+            _countryRepo.AddCountry(country);
+        }
+
+        public void DeleteCountry(string id)
+        {
+            _countryRepo.RemoveCountry(id);
+        }
+
         public List<Country> GetAllCountries()
         {
-            
-            return _commonDAO.getAllCountries();
+            return _countryRepo.getAllCountries();
         }
     }
 }

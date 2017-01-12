@@ -17,7 +17,7 @@ namespace Assets.IocContainer
         {
             kernel = new StandardKernel();
             kernel.Bind<ICommonManager>().To<CommonManager>();
-            kernel.Bind<ICommonDAO>().To<CommonDAO>();
+            kernel.Bind<ICountryRepository>().To<CountryRepository>();
             //add the rest of the mappings here
         }
 

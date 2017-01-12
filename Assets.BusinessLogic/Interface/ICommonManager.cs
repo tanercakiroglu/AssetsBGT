@@ -6,5 +6,7 @@ namespace Assets.BusinessLogic.Interface
     public interface ICommonManager
     {
         List<Country> GetAllCountries();
+        void AddCountry(Country country);
+        void DeleteCountry(string id);
     }
 }

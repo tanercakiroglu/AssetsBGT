@@ -7,20 +7,20 @@ namespace Assets.DO
     public class Country
     {
         [DataMember]
-        public long ID;
+        public long Id { get; set; }
         [DataMember]
-        public string name;
+        public string Name { get; set; }
         [DataMember]
-        public string code;
+        public string Code { get; set; }
         [DataMember]
-        public string tripleCode;
+        public string TripleCode { get; set; }
         [DataMember]
-        public int order;
+        public int Order { get; set; }
         [DataMember]
-        public DateTime createDate;
+        public DateTime CreateDate { get; set; }
         [DataMember]
-        public bool active;
+        public bool IsActive { get; set; }
         [DataMember]
-        public string phoneCode;
+        public string PhoneCode { get; set; }
     }
 }
