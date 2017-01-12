@@ -102,6 +102,7 @@ namespace Assets.DataAccessLayer
             IDbConnection cn = null;
             try
             {
+                cn = Connection;
                 cn.Open();
                 cn.Execute(sql, item);
             }
