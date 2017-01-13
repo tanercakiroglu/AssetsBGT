@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using System.Configuration;
 
 namespace Assets.DataAccessLayer
 {
@@ -14,7 +15,7 @@ namespace Assets.DataAccessLayer
         {
             get
             {
-                return new SqlConnection( "Data Source=188.121.44.212;Initial Catalog=assetsDB;User ID=assets-user;Password=Sa123456");
+                return new SqlConnection(ConfigurationManager.ConnectionStrings["Connection"].ConnectionString);
             }
         }
 
