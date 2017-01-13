@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
-using Assets.DO;
+﻿using Assets.DO;
 using Assets.BusinessLogic.Interface;
 using System.ServiceModel.Activation;
+using Assets.DO.Response;
+using System;
+using System.Linq;
 
 namespace Assets.Service.Interface
 {
@@ -15,19 +17,62 @@ namespace Assets.Service.Interface
             _commonManager = commonManager;
         }
 
-        public void AddCountry(Country country)
+        public BaseResponse AddCountry(Country country)
         {
-            _commonManager.AddCountry(country);
+            var response = new BaseResponse();
+            try
+            {
+                //will be create static recursive method to null or empty check 
+                bool isAnyPropEmpty = country.GetType().GetProperties()
+                                    .Where(p => p.GetValue(country) is string) 
+                                    .Any(p => string.IsNullOrWhiteSpace((p.GetValue(country) as string)));
+                if (isAnyPropEmpty)
+                    throw new ArgumentNullException();
+
+                _commonManager.AddCountry(country);
+            }
+            catch (Exception ex)
+            {
+                response.ErrorMessage = ex.Message;
+                response.OperationStatus = false;
+                response.Tag = "GeneralExcepiton";
+            }
+            return response;
         }
 
-        public void DeleteDountry(string id)
+        public BaseResponse DeleteDountry(string id)
         {
-            _commonManager.DeleteCountry(id);
+            var response = new BaseResponse();
+            try
+            {
+                if (id == null || id.Trim().Length <= 0)
+                    throw new ArgumentNullException();
+                _commonManager.DeleteCountry(id);
+            }
+            catch (Exception ex)
+            {
+                response.ErrorMessage = ex.Message;
+                response.OperationStatus = false;
+                response.Tag = "GeneralExcepiton";
+            }
+            return response;
         }
 
-        public List<Country> getAllCountries()
+        public GetAllCountriesResponse getAllCountries()
         {
-            return _commonManager.GetAllCountries();
+            var response = new GetAllCountriesResponse();
+            try
+            {
+                response.Countries = _commonManager.GetAllCountries();
+            }
+            catch (Exception ex)
+            {
+                response.ErrorMessage = ex.Message;
+                response.OperationStatus = false;
+                response.Tag = "GeneralExcepiton";
+            }
+            return response;
         }
     }
+
 }

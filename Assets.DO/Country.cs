@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Assets.DO
 {
     [DataContract]
-    public class Country
+    public class Country 
     {
         [DataMember]
         public long Id { get; set; }

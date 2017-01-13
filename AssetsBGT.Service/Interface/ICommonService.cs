@@ -1,5 +1,5 @@
 ﻿using Assets.DO;
-using System.Collections.Generic;
+using Assets.DO.Response;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 
@@ -13,21 +13,21 @@ namespace Assets.Service.Interface
                               ResponseFormat = WebMessageFormat.Json,
                               BodyStyle = WebMessageBodyStyle.Wrapped,
                               UriTemplate = "getAllCountries")]
-        List<Country> getAllCountries();
+        GetAllCountriesResponse getAllCountries();
 
         [OperationContract]
         [WebInvoke(Method = "POST",
                          RequestFormat =WebMessageFormat.Json,
                          ResponseFormat = WebMessageFormat.Json,
                          UriTemplate = "addCountry")]
-        void AddCountry(Country country);
+        BaseResponse AddCountry(Country country);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
                          RequestFormat = WebMessageFormat.Json,
                          ResponseFormat = WebMessageFormat.Json,
                          UriTemplate = "deleteCountry/{Id}")]
-        void DeleteDountry(string Id);
+        BaseResponse DeleteDountry(string Id);
 
     }
    
