@@ -30,5 +30,5 @@ namespace Assets.Service.Interface
         BaseResponse DeleteDountry(string Id);
 
     }
-   
+
 }

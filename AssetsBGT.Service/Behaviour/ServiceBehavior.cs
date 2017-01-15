@@ -1,9 +1,9 @@
-﻿using AssetsBGT.Service.Interceptor;
+﻿using Assets.Service.Interceptor;
 using System;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
-namespace AssetsBGT.Service.Behaviour
+namespace Assets.Service.Behaviour
 {
     public class ServiceBehavior : Attribute, IServiceBehavior
     {

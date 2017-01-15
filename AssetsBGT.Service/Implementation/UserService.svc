@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Assets.Service.Implementation.UserService" CodeBehind="UserService.svc.cs" Factory="Assets.IocContainer.NInjectServiceHostFactory" %>

@@ -5,6 +5,7 @@ C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\AssetsBGT.
 C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\AssetsBGT.Service\bin\Assets.BusinessLogic.dll
 C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\AssetsBGT.Service\bin\Assets.DO.dll
 C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\AssetsBGT.Service\bin\Assets.IocContainer.dll
+C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\AssetsBGT.Service\bin\jose-jwt.dll
 C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\AssetsBGT.Service\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\AssetsBGT.Service\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\AssetsBGT.Service\bin\Microsoft.AI.PerfCounterCollector.dll

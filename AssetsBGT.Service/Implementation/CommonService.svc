@@ -1,3 +1,3 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="Assets.Service.Interface.CommonService" CodeBehind="CommonService.svc.cs"  Factory="Assets.IocContainer.NInjectServiceHostFactory" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Assets.Service.Implementation.CommonService" CodeBehind="CommonService.svc.cs"  Factory="Assets.IocContainer.NInjectServiceHostFactory" %>
 
 

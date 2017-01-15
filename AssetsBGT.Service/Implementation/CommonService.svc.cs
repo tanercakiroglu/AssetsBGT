@@ -4,9 +4,10 @@ using System.ServiceModel.Activation;
 using Assets.DO.Response;
 using System;
 using System.Linq;
-using AssetsBGT.Service.Behaviour;
+using Assets.Service.Behaviour;
+using Assets.Service.Interface;
 
-namespace Assets.Service.Interface
+namespace Assets.Service.Implementation
 {
     [ServiceBehavior]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
@@ -26,7 +27,7 @@ namespace Assets.Service.Interface
             {
                 //will be create static recursive method to null or empty check 
                 bool isAnyPropEmpty = country.GetType().GetProperties()
-                                    .Where(p => p.GetValue(country) is string) 
+                                    .Where(p => p.GetValue(country) is string)
                                     .Any(p => string.IsNullOrWhiteSpace((p.GetValue(country) as string)));
                 if (isAnyPropEmpty)
                     throw new ArgumentNullException();
@@ -75,6 +76,7 @@ namespace Assets.Service.Interface
             }
             return response;
         }
+       
     }
 
 }
