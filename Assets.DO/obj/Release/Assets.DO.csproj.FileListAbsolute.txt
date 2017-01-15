@@ -1,0 +1,5 @@
+C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\Assets.DO\bin\Release\Assets.DO.dll
+C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\Assets.DO\bin\Release\Assets.DO.pdb
+C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\Assets.DO\obj\Release\Assets.DO.csprojResolveAssemblyReference.cache
+C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\Assets.DO\obj\Release\Assets.DO.dll
+C:\Users\yiğit konya\documents\visual studio 2015\Projects\AssetsBGT\Assets.DO\obj\Release\Assets.DO.pdb

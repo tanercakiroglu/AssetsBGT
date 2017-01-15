@@ -4,9 +4,11 @@ using System.ServiceModel.Activation;
 using Assets.DO.Response;
 using System;
 using System.Linq;
+using AssetsBGT.Service.Behaviour;
 
 namespace Assets.Service.Interface
 {
+    [ServiceBehavior]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class CommonService : ICommonService
     {
