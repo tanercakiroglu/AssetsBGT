@@ -1,23 +1,46 @@
-﻿using Assets.DO;
+﻿using Assets.BusinessLogic.Interface;
+using Assets.DO;
 using Assets.DO.Response;
 using Assets.Service.Interface;
 using Jose;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Assets.Service.Implementation
 {
     public class UserService : IUserService
     {
+        private IUserManager _userManager;
+        public UserService(IUserManager userManager)
+        {
+            _userManager = userManager;
+        }
+
         public CheckCredentialResponse CheckCredential(User user)
         {
             var response = new CheckCredentialResponse();
-            if (user != null)
+            bool isAnyPropEmpty = user.GetType().GetProperties()
+                                  .Where(p => p.GetValue(user) is string)
+                                  .Any(p => string.IsNullOrWhiteSpace((p.GetValue(user) as string)));
+            if (user == null || isAnyPropEmpty)
+                throw new ArgumentNullException();
+
+           
+            try
             {
-                if ("taner" == user.Username && "taner" == user.Password)
-                    response.token = CreateToken();
+                if(_userManager.CheckCredential(user))
+                response.token= CreateToken();
             }
+            catch (Exception ex)
+            {
+                response.ErrorMessage = ex.Message;
+                response.OperationStatus = false;
+                response.Tag = "GeneralExcepiton";
+            }
+                   
+            
             return response;
         }
 
@@ -25,6 +48,7 @@ namespace Assets.Service.Implementation
         private static string CreateToken()
         {
             string token = null;
+            
             byte[] secretKey = Encoding.ASCII.GetBytes("YOUR_CLIENT_SECRETsssssssssssssssssssssssssssssssssssssss");
             DateTime issued = DateTime.Now;
             DateTime expire = DateTime.Now.AddMinutes(10);
@@ -40,7 +64,7 @@ namespace Assets.Service.Implementation
             try
             {
 
-                token = JWT.Encode(payload, secretKey, JwsAlgorithm.HS256);
+                token = JWT.Encode(payload, secretKey, JwsAlgorithm.HS512);
             }
             catch (Exception ex)
             {

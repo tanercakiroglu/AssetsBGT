@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementation\CommonManager.cs" />
+    <Compile Include="Implementation\UserManager.cs" />
     <Compile Include="Interface\ICommonManager.cs" />
+    <Compile Include="Interface\IUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

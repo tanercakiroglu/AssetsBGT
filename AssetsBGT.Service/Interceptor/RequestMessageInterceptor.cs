@@ -50,7 +50,7 @@ namespace Assets.Service.Interceptor
             try
             {
                 byte[] toBytes = Encoding.ASCII.GetBytes("YOUR_CLIENT_SECRETsssssssssssssssssssssssssssssssssssssss");
-                tokenElements = JWT.Decode<Dictionary<string, object>>(auth, toBytes, JwsAlgorithm.HS256);
+                tokenElements = JWT.Decode<Dictionary<string, object>>(auth, toBytes, JwsAlgorithm.HS512);
             }
             catch (Exception ex)
             {

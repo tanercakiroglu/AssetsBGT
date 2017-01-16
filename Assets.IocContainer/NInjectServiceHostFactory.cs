@@ -18,6 +18,7 @@ namespace Assets.IocContainer
             kernel = new StandardKernel();
             kernel.Bind<ICommonManager>().To<CommonManager>();
             kernel.Bind<ICountryRepository>().To<CountryRepository>();
+            kernel.Bind<IUserManager>().To<UserManager>();
             //add the rest of the mappings here
         }
 
