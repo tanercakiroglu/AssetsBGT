@@ -9,7 +9,7 @@ using Assets.Service.Interface;
 
 namespace Assets.Service.Implementation
 {
-    [ServiceBehavior]
+    [SecuredServiceBehavior]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class CommonService : ICommonService
     {
@@ -48,8 +48,8 @@ namespace Assets.Service.Implementation
             var response = new BaseResponse();
             try
             {
-                if (id == null || id.Trim().Length <= 0)
-                    throw new ArgumentNullException();
+                if (String.IsNullOrWhiteSpace(id))
+                    throw new ArgumentNullException("id");
                 _commonManager.DeleteCountry(id);
             }
             catch (Exception ex)

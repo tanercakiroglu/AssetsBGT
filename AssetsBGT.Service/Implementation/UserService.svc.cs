@@ -2,6 +2,7 @@
 using Assets.DO;
 using Assets.DO.Response;
 using Assets.Service.Interface;
+using Assets.Service.Behaviour;
 using Jose;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Text;
 
 namespace Assets.Service.Implementation
 {
+    [NonSecuredServiceBehavior]
     public class UserService : IUserService
     {
         private IUserManager _userManager;

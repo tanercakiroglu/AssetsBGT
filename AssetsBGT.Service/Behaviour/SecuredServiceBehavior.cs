@@ -5,9 +5,9 @@ using System.ServiceModel.Dispatcher;
 
 namespace Assets.Service.Behaviour
 {
-    public class ServiceBehavior : Attribute, IServiceBehavior
+    public class SecuredServiceBehavior : Attribute, IServiceBehavior
     {
-        public ServiceBehavior()
+        public SecuredServiceBehavior()
         {
         }
 
@@ -28,7 +28,7 @@ namespace Assets.Service.Behaviour
                 {
                     foreach (EndpointDispatcher ed in cd.Endpoints)
                     {
-                         ed.DispatchRuntime.MessageInspectors.Add(new RequestMessageInterceptor());
+                         ed.DispatchRuntime.MessageInspectors.Add(new SecuredRequestMessageInterceptor());
                     }
                 }
             }
