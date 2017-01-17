@@ -23,12 +23,15 @@ namespace Assets.Service.Implementation
         public CheckCredentialResponse CheckCredential(User user)
         {
             var response = new CheckCredentialResponse();
+
+            if (user == null)
+                throw new ArgumentNullException();
+
             bool isAnyPropEmpty = user.GetType().GetProperties()
                                   .Where(p => p.GetValue(user) is string)
                                   .Any(p => string.IsNullOrWhiteSpace((p.GetValue(user) as string)));
-            if (user == null || isAnyPropEmpty)
+            if(isAnyPropEmpty)
                 throw new ArgumentNullException();
-
            
             try
             {

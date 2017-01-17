@@ -13,7 +13,7 @@ namespace Assets.Service.Interceptor
 {
     public class NonSecuredRequestMessageInterceptor : IDispatchMessageInspector
     {
-        const string MessageLogFolder = @"C:\temp\";
+        const string MessageLogFolder = @"C:\";
         static int messageLogFileIndex = 0;
         public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)
         {

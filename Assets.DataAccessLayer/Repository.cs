@@ -1,5 +1,4 @@
-﻿using Assets.DataAccessLayer.Interface;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Data;
@@ -9,7 +8,7 @@ using System.Configuration;
 
 namespace Assets.DataAccessLayer
 {
-    public abstract class Repository<T> : IRepository<T> where T : class
+    public abstract class Repository<T> where T:class
     {
         internal IDbConnection Connection
         {
@@ -19,9 +18,7 @@ namespace Assets.DataAccessLayer
             }
         }
 
-     
-
-        public void Add(T item, string sql)
+        protected virtual void Add(T item, string sql)
         {
             IDbConnection cn = null;
             try
@@ -32,7 +29,6 @@ namespace Assets.DataAccessLayer
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -40,15 +36,14 @@ namespace Assets.DataAccessLayer
                 if (cn != null)
                     cn.Close();
             }
-
         }
 
-        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
+        protected virtual IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public virtual IEnumerable<T> FindAll(string _tableName)
+        protected virtual IEnumerable<T> FindAll(string _tableName)
         {
             IEnumerable<T> items = null;
             IDbConnection cn = null;
@@ -68,13 +63,10 @@ namespace Assets.DataAccessLayer
                 if (cn != null)
                     cn.Close();
             }
-
-
             return items;
         }
 
-
-        public void Remove(T item, string sql)
+        protected virtual void Remove(T item, string sql)
         {
             IDbConnection cn = null;
             try
@@ -93,12 +85,9 @@ namespace Assets.DataAccessLayer
                 if (cn != null)
                     cn.Close();
             }
-        
-              
-            
         }
 
-        public void Update(T item,string sql)
+        protected virtual void Update(T item,string sql)
         {
             IDbConnection cn = null;
             try
@@ -109,7 +98,6 @@ namespace Assets.DataAccessLayer
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -117,7 +105,6 @@ namespace Assets.DataAccessLayer
                 if (cn != null)
                     cn.Close();
             }
-
         }
     }
 }
