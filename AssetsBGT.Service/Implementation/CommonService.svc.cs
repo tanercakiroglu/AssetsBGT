@@ -61,7 +61,7 @@ namespace Assets.Service.Implementation
             return response;
         }
 
-        public GetAllCountriesResponse getAllCountries()
+        public GetAllCountriesResponse GetAllCountries()
         {
             var response = new GetAllCountriesResponse();
             try
@@ -76,7 +76,38 @@ namespace Assets.Service.Implementation
             }
             return response;
         }
-       
+
+        public GetAllProvincesResponse GetAllProvinces()
+        {
+            var response = new GetAllProvincesResponse();
+            try
+            {
+                response.Provinces = _commonManager.GetAllProvinces();
+            }
+            catch (Exception ex)
+            {
+                response.ErrorMessage = ex.Message;
+                response.OperationStatus = false;
+                response.Tag = "GeneralExcepiton";
+            }
+            return response;
+        }
+
+        public GetDistrictsByCountryResponse GetDistrictsByProvinceID(string Id)
+        {
+            var response = new GetDistrictsByCountryResponse();
+            try
+            {
+                response.DistrictList = _commonManager.GetDistrictsByProvinceID(Id);
+            }
+            catch (Exception ex)
+            {
+                response.ErrorMessage = ex.Message;
+                response.OperationStatus = false;
+                response.Tag = "GeneralExcepiton";
+            }
+            return response;
+        }
     }
 
 }

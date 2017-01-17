@@ -13,7 +13,7 @@ namespace Assets.Service.Interface
                               ResponseFormat = WebMessageFormat.Json,
                               BodyStyle = WebMessageBodyStyle.Wrapped,
                               UriTemplate = "getAllCountries")]
-        GetAllCountriesResponse getAllCountries();
+        GetAllCountriesResponse GetAllCountries();
 
         [OperationContract]
         [WebInvoke(Method = "POST",
@@ -29,6 +29,20 @@ namespace Assets.Service.Interface
                          UriTemplate = "deleteCountry/{Id}")]
         BaseResponse DeleteDountry(string Id);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+                        RequestFormat = WebMessageFormat.Json,
+                        ResponseFormat = WebMessageFormat.Json,
+                        UriTemplate = "getAllProvinces")]
+        GetAllProvincesResponse GetAllProvinces();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+                         RequestFormat = WebMessageFormat.Json,
+                         ResponseFormat = WebMessageFormat.Json,
+                         UriTemplate = "getDistrictsByProvinceID/{Id}")]
+        GetDistrictsByCountryResponse GetDistrictsByProvinceID(string Id);
+        
     }
 
 }

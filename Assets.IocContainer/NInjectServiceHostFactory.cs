@@ -19,6 +19,8 @@ namespace Assets.IocContainer
             kernel.Bind<ICommonManager>().To<CommonManager>();
             kernel.Bind<ICountryRepository>().To<CountryRepository>();
             kernel.Bind<IUserManager>().To<UserManager>();
+            kernel.Bind<IProvinceRepository>().To<ProvinceRepository>();
+            kernel.Bind<IDistrictRepository>().To<DistrictRepository>();
             //add the rest of the mappings here
         }
 

@@ -38,9 +38,27 @@ namespace Assets.DataAccessLayer
             }
         }
 
-        protected virtual IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
+        protected virtual IEnumerable<T> FindBy(T item, string sql)
         {
-            throw new NotImplementedException();
+            IEnumerable<T> items = null;
+            IDbConnection cn = null;
+            try
+            {
+                cn = Connection;
+                cn.Open();
+                items = cn.Query<T>(sql,item);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (cn != null)
+                    cn.Close();
+            }
+            return items;
         }
 
         protected virtual IEnumerable<T> FindAll(string _tableName)
