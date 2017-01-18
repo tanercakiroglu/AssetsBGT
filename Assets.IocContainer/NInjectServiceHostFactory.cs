@@ -21,6 +21,7 @@ namespace Assets.IocContainer
             kernel.Bind<IUserManager>().To<UserManager>();
             kernel.Bind<IProvinceRepository>().To<ProvinceRepository>();
             kernel.Bind<IDistrictRepository>().To<DistrictRepository>();
+            kernel.Bind<INeighborhoodRepository>().To<NeighborhoodRepository>();
             //add the rest of the mappings here
         }
 

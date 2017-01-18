@@ -1,4 +1,4 @@
-﻿using Assets.DO;
+﻿using Assets.DO.DataObject;
 using System.Collections.Generic;
 
 namespace Assets.DataAccessLayer.Interface

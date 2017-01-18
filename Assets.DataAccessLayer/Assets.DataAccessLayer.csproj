@@ -56,9 +56,11 @@
   <ItemGroup>
     <Compile Include="Implementation\CountryRepository.cs" />
     <Compile Include="Implementation\DistrictRepository.cs" />
+    <Compile Include="Implementation\NeighborhoodRepository.cs" />
     <Compile Include="Implementation\ProvinceRepository.cs" />
     <Compile Include="Interface\ICountryRepository.cs" />
     <Compile Include="Interface\IDistrictRepository.cs" />
+    <Compile Include="Interface\INeighborhoodRepository.cs" />
     <Compile Include="Interface\IProvinceRepository.cs" />
     <Compile Include="Interface\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

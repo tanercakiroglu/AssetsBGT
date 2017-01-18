@@ -1,4 +1,4 @@
-﻿using Assets.DO;
+﻿using Assets.DO.DataObject;
 using Assets.DO.Response;
 using System.ServiceModel;
 using System.ServiceModel.Web;
@@ -42,7 +42,14 @@ namespace Assets.Service.Interface
                          ResponseFormat = WebMessageFormat.Json,
                          UriTemplate = "getDistrictsByProvinceID/{Id}")]
         GetDistrictsByCountryResponse GetDistrictsByProvinceID(string Id);
-        
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+                        RequestFormat = WebMessageFormat.Json,
+                        ResponseFormat = WebMessageFormat.Json,
+                        UriTemplate = "getAllNeighborhoods")]
+        GetAllNeighborhoodResponse GetAllNeighborhoods();
+
     }
 
 }

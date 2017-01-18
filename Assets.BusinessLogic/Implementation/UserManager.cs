@@ -1,6 +1,5 @@
-﻿using System;
-using Assets.BusinessLogic.Interface;
-using Assets.DO;
+﻿using Assets.BusinessLogic.Interface;
+using Assets.DO.DataObject;
 
 namespace Assets.BusinessLogic.Implementation
 {

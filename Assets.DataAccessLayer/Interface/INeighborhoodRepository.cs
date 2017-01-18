@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace Assets.DataAccessLayer.Interface
 {
-    public interface IProvinceRepository
+    public  interface INeighborhoodRepository
     {
-        List<Province> GetAllProvince();
+        List<Neighborhood> GelAllNeighborhoods();
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Assets.BusinessLogic.Interface;
-using Assets.DO;
+using Assets.DO.DataObject;
 using Assets.DO.Response;
 using Assets.Service.Interface;
 using Assets.Service.Behaviour;
@@ -40,9 +40,7 @@ namespace Assets.Service.Implementation
             }
             catch (Exception ex)
             {
-                response.ErrorMessage = ex.Message;
-                response.OperationStatus = false;
-                response.Tag = "GeneralExcepiton";
+                response.PrepareException(ex);
             }
                    
             

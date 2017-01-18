@@ -1,4 +1,4 @@
-﻿using Assets.DO;
+﻿using Assets.DO.DataObject;
 using Assets.BusinessLogic.Interface;
 using System.ServiceModel.Activation;
 using Assets.DO.Response;
@@ -25,7 +25,7 @@ namespace Assets.Service.Implementation
             var response = new BaseResponse();
             try
             {
-                //will be create static recursive method to null or empty check 
+                //will be create static recursive method to  check  null or empty 
                 bool isAnyPropEmpty = country.GetType().GetProperties()
                                     .Where(p => p.GetValue(country) is string)
                                     .Any(p => string.IsNullOrWhiteSpace((p.GetValue(country) as string)));
@@ -36,9 +36,7 @@ namespace Assets.Service.Implementation
             }
             catch (Exception ex)
             {
-                response.ErrorMessage = ex.Message;
-                response.OperationStatus = false;
-                response.Tag = "GeneralExcepiton";
+                response.PrepareException(ex);
             }
             return response;
         }
@@ -54,9 +52,7 @@ namespace Assets.Service.Implementation
             }
             catch (Exception ex)
             {
-                response.ErrorMessage = ex.Message;
-                response.OperationStatus = false;
-                response.Tag = "GeneralExcepiton";
+                response.PrepareException(ex);
             }
             return response;
         }
@@ -70,9 +66,21 @@ namespace Assets.Service.Implementation
             }
             catch (Exception ex)
             {
-                response.ErrorMessage = ex.Message;
-                response.OperationStatus = false;
-                response.Tag = "GeneralExcepiton";
+                response.PrepareException(ex);
+            }
+            return response;
+        }
+
+        public GetAllNeighborhoodResponse GetAllNeighborhoods()
+        {
+            var response = new GetAllNeighborhoodResponse();
+            try
+            {
+                response.Neighborhoods = _commonManager.GetAllNeighborhood();
+            }
+            catch (Exception ex)
+            {
+                response.PrepareException(ex);
             }
             return response;
         }
@@ -86,9 +94,7 @@ namespace Assets.Service.Implementation
             }
             catch (Exception ex)
             {
-                response.ErrorMessage = ex.Message;
-                response.OperationStatus = false;
-                response.Tag = "GeneralExcepiton";
+                response.PrepareException(ex);
             }
             return response;
         }
@@ -102,9 +108,7 @@ namespace Assets.Service.Implementation
             }
             catch (Exception ex)
             {
-                response.ErrorMessage = ex.Message;
-                response.OperationStatus = false;
-                response.Tag = "GeneralExcepiton";
+                response.PrepareException(ex);
             }
             return response;
         }

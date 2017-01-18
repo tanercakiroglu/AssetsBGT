@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Assets.DO
+namespace Assets.DO.DataObject
 {
     [DataContract]
     public class District

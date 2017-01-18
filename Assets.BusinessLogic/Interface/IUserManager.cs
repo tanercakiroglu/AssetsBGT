@@ -1,4 +1,4 @@
-﻿using Assets.DO;
+﻿using Assets.DO.DataObject;
 
 namespace Assets.BusinessLogic.Interface
 {

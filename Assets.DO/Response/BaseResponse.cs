@@ -1,9 +1,11 @@
-﻿using System.Runtime.Serialization;
+﻿using Assets.DO.Interface;
+using System.Runtime.Serialization;
+using System;
 
 namespace Assets.DO.Response
 {
     [DataContract]
-    public class BaseResponse
+    public class BaseResponse :IResponse
     {
         public BaseResponse()
         {
@@ -19,5 +21,12 @@ namespace Assets.DO.Response
 
         [DataMember]
         public string ErrorMessage { get; set; }
+
+        public void PrepareException(Exception ex)
+        {
+            this.ErrorMessage = ex.Message;
+            this.OperationStatus = false;
+            this.Tag = "GeneralExcepiton";
+        }
     }
 }

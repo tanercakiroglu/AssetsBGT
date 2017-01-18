@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.DO.DataObject;
+using System.Collections.Generic;
 
 namespace Assets.DO.Response
 {

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Assets.DataAccessLayer.Interface;
-using Assets.DO;
+using Assets.DO.DataObject;
 
 namespace Assets.DataAccessLayer.Implementation
 {
@@ -19,5 +18,7 @@ namespace Assets.DataAccessLayer.Implementation
             }
             return list;
         }
+
+        
     }
 }

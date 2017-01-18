@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.BusinessLogic.Interface;
-using Assets.DO;
+using Assets.DO.DataObject;
 using Assets.DataAccessLayer.Interface;
 using System;
 
@@ -11,12 +11,14 @@ namespace Assets.BusinessLogic.Implementation
         private ICountryRepository _countryRepo;
         private IProvinceRepository _provinceRepo;
         private IDistrictRepository _districtRepo;
+        private INeighborhoodRepository _neighborhoodRepo;
 
-        public CommonManager(ICountryRepository countryRepo,IProvinceRepository provinceRepo , IDistrictRepository districtRepo)
+        public CommonManager(ICountryRepository countryRepo, IProvinceRepository provinceRepo, IDistrictRepository districtRepo, INeighborhoodRepository neighborhoodRepo)
         {
             _countryRepo = countryRepo;
             _provinceRepo = provinceRepo;
             _districtRepo = districtRepo;
+            _neighborhoodRepo = neighborhoodRepo;
         }
 
         public void AddCountry(Country country)
@@ -42,10 +44,15 @@ namespace Assets.BusinessLogic.Implementation
         public List<District> GetDistrictsByProvinceID(string id)
         {
             int provinceID;
-            if(Int32.TryParse(id,out provinceID))
-            return _districtRepo.GetDistrictsByProvinceID(provinceID);
+            if (Int32.TryParse(id, out provinceID))
+                return _districtRepo.GetDistrictsByProvinceID(provinceID);
 
             throw new ArgumentException("id");
+        }
+
+        public List<Neighborhood> GetAllNeighborhood()
+        {
+            return _neighborhoodRepo.GelAllNeighborhoods();
         }
     }
 }

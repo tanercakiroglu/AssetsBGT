@@ -1,4 +1,4 @@
-﻿using Assets.DO;
+﻿using Assets.DO.DataObject;
 using Assets.DO.Response;
 using System.ServiceModel;
 using System.ServiceModel.Web;

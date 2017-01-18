@@ -1,4 +1,4 @@
-﻿using Assets.DO;
+﻿using Assets.DO.DataObject;
 using System.Collections.Generic;
 
 namespace Assets.BusinessLogic.Interface
@@ -10,5 +10,6 @@ namespace Assets.BusinessLogic.Interface
         void DeleteCountry(string id);
         List<Province> GetAllProvinces();
         List<District> GetDistrictsByProvinceID(string id);
+        List<Neighborhood> GetAllNeighborhood();
     }
 }
