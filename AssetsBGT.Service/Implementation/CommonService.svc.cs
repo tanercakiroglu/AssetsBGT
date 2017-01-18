@@ -3,9 +3,9 @@ using Assets.BusinessLogic.Interface;
 using System.ServiceModel.Activation;
 using Assets.DO.Response;
 using System;
-using System.Linq;
 using Assets.Service.Behaviour;
 using Assets.Service.Interface;
+using AssetsBGT.Service.Util;
 
 namespace Assets.Service.Implementation
 {
@@ -25,14 +25,8 @@ namespace Assets.Service.Implementation
             var response = new BaseResponse();
             try
             {
-                //will be create static recursive method to  check  null or empty 
-                bool isAnyPropEmpty = country.GetType().GetProperties()
-                                    .Where(p => p.GetValue(country) is string)
-                                    .Any(p => string.IsNullOrWhiteSpace((p.GetValue(country) as string)));
-                if (isAnyPropEmpty)
-                    throw new ArgumentNullException();
-
-                _commonManager.AddCountry(country);
+                if (!Utility.IsAnyPropNullOrEmpty(country))
+                    _commonManager.AddCountry(country);
             }
             catch (Exception ex)
             {
@@ -46,9 +40,8 @@ namespace Assets.Service.Implementation
             var response = new BaseResponse();
             try
             {
-                if (String.IsNullOrWhiteSpace(id))
-                    throw new ArgumentNullException("id");
-                _commonManager.DeleteCountry(id);
+                if (!Utility.IsNullOrEmpty(id))
+                    _commonManager.DeleteCountry(id);
             }
             catch (Exception ex)
             {
@@ -104,7 +97,8 @@ namespace Assets.Service.Implementation
             var response = new GetDistrictsByCountryResponse();
             try
             {
-                response.DistrictList = _commonManager.GetDistrictsByProvinceID(Id);
+                if (!Utility.IsNullOrEmpty(Id))
+                    response.DistrictList = _commonManager.GetDistrictsByProvinceID(Id);
             }
             catch (Exception ex)
             {

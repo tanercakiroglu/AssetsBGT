@@ -113,6 +113,7 @@
     <Compile Include="Implementation\UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Util\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
