@@ -7,7 +7,11 @@ namespace AssetsBGT.Service.Util
     {
         public static bool IsAnyPropNullOrEmpty(object obj)
         {
-            bool isAnyPropEmpty = obj.GetType().GetProperties()
+            bool isAnyPropEmpty;
+            if (obj == null)
+                throw new ArgumentNullException("Object");
+
+            isAnyPropEmpty = obj.GetType().GetProperties()
                                 .Where(p => p.GetValue(obj) is string)
                                 .Any(p => string.IsNullOrWhiteSpace((p.GetValue(obj) as string)));
             if (isAnyPropEmpty)

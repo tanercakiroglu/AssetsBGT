@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AssetsBGT.Service.Util;
 
 namespace Assets.Service.Implementation
 {
@@ -23,20 +24,13 @@ namespace Assets.Service.Implementation
         public CheckCredentialResponse CheckCredential(User user)
         {
             var response = new CheckCredentialResponse();
-
-            if (user == null)
-                throw new ArgumentNullException();
-
-            bool isAnyPropEmpty = user.GetType().GetProperties()
-                                  .Where(p => p.GetValue(user) is string)
-                                  .Any(p => string.IsNullOrWhiteSpace((p.GetValue(user) as string)));
-            if(isAnyPropEmpty)
-                throw new ArgumentNullException();
-           
             try
             {
-                if(_userManager.CheckCredential(user))
-                response.token= CreateToken();
+                if (!Utility.IsAnyPropNullOrEmpty(user))
+                {
+                    if (_userManager.CheckCredential(user))
+                        response.token = CreateToken();
+                }
             }
             catch (Exception ex)
             {
